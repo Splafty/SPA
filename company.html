@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Wizytówka Vue</title>
+    <script src="https://unpkg.com/vue@3"></script>
+    <style>
+        /* ramka */
+        #app-company {
+            border: 1px solid black;  
+            padding: 20px;            
+            width: fit-content;       
+            text-align: center;       
+            font-family: Arial, sans-serif; 
+            margin: 20px;
+        }
+
+        #app-company p {
+            margin: 5px 0;
+        }
+
+        .company-name {
+            font-weight: bold;
+            font-size: 1.2em;
+            margin-bottom: 10px !important;
+        }
+    </style>
+</head>
+<body>
+
+<div id="app-company">  
+    <p class="company-name">UNIKPOL S.A.</p>
+    <p>ul. Ukryta 5</p>
+    <p>02-114 Rawa Mazowiecka</p>
+    <p>tel. 22 345 90 21, 888 213 992</p>
+    
+    <a :href="link">{{ link }}</a>
+</div>
+
+<script>
+  const { createApp } = Vue;
+
+  createApp({
+    data() {
+      return {
+        link: 'http://www.unikpol.pl'
+      }
+    }
+  }).mount('#app-company')
+</script>
+
+</body>
+</html>
