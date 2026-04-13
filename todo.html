@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://unpkg.com/vue@3"></script>
+    <title>Document</title>
+</head>
+<body>
+    <div id="app">
+        <div>
+            <p> {{title}}</p>
+        <ol>
+            <li v-for="task in tasks">
+                {{task}}
+            </li>
+        </ol>
+        </div>
+    </div>
+    <script>
+        Vue.createApp({
+            data() {
+                return {
+                    title: 'DO WYKONANIA',
+                    tasks : [
+                        'Kup bilety do kina',
+                        'Zrób zakupy jedzeniowe',
+                        'Przygotuj się na kolokwium z PVD',
+                        '...',
+                        '...',
+                        'Czas wolny'
+                    ]
+                }
+            }
+        }).mount('#app')
+    </script>
+    
+</body>
+</html>

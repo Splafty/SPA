@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://unpkg.com/vue@3"></script>
+    <title>Document</title>
+</head>
+<body>
+    <h3> Oblicz BMI</h3>
+    <div id="app">
+        <p>Wzrost (cm): {{cm}} </p>
+        <input type="text" v-model="cm">
+        <p>Masa (kg): {{kg}}</p>
+        <input type="text" v-model="kg">
+        <p></p>
+        <button type="button" v-on:click="counter()">
+            Oblicz 
+        </button>
+        <p> BMI: {{bmi}}</p>
+         
+    </div>
+    <script>
+        Vue.createApp({
+            data() {
+                return {
+                    cm: 159,
+                    kg: 89,
+                    bmi: 0
+                }
+            },
+            computed: {
+                counter() {
+                    this.bmi = this.kg/(this.cm/100)**2
+                    return this.bmi.toFixed(2)
+                }
+            }
+        }).mount('#app')
+    </script>
+</body>
+</html>
