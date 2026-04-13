@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Książka</title>
+    <script src="https://unpkg.com/vue@3"></script>
+</head>
+<body>
+    <h1>Książka</h1>
+    <p>Utwórz program book.html, zawierający pola formularza do wprowadzenia tytułu książki oraz imienia i nazwiska jej autora. Po kliknięciu na przycisk "Zapisz", program powinien wyświetlić wprowadzone dane w konsoli.
+    <br>
+    Aby wyświetlić dane w konsoli, w aplikacji Vue utwórz metodę, która wywołana po wystąpieniu zdarzenia, wyświetli wymagane dane w konsoli.
+    </p>
+    <div id="app">
+        <p>Tytuł książki:</p>
+        <input type="text" v-model="title">
+        <p>Imię i nazwisko autora:</p>
+        <input type="text" v-model="author">
+        <br><br>
+        <button @click="saveBook()">Zapisz</button>
+
+    </div>
+
+    <!-- Mount app -->
+    <script>
+        Vue.createApp ({
+            data() {
+                return {
+                    title: '',
+                    author: ''
+                }
+            },
+            methods: {
+                saveBook() {
+                    console.log('Tytuł książki:', this.title);
+                    console.log('Imię i nazwisko autora:', this.author);
+                }
+            }
+        }).mount('#app')
+    </script>
+</body>
+</html>

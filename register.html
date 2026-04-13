@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rejestracja</title>
+    <script src="https://unpkg.com/vue@3"></script>
+</head>
+<body>
+    <h1>Rejestracja</h1>
+    <p>Utwórz aplikację register.html realizującą formularz rejestracyjny użytkownika. Formularz powinien zawierać pola:
+    Imię i nazwisko, E-mail, Hasło, Powtórz hasło, Checkbox: „Akceptuję regulamin”
+    <br>
+    Dodaj w formularzu przycisk Zarejestruj, który jest nieaktywny, jeśli dane formularza są niepoprawne.
+    <br>
+    Dane formularza są poprawne, gdy: wszystkie pola zostały wypełnione, e-mail musi zawierać znak @, a hasła muszą być identyczne.
+    </p>
+
+    <div id="app">
+    <form @submit.prevent="submitForm">
+        <input type="text" v-model="firstName" placeholder="Imię"/><br>
+        <input type="text" v-model="lastName" placeholder="Nazwisko"/><br>
+        <input type="email" v-model="email" placeholder="E-mail"/><br>
+        <input type="password" v-model="password" placeholder="Hasło"/><br>
+        <input type="password" v-model="confirmPassword" placeholder="Powtórz hasło"/><br>
+        
+        <label>
+            <input type="checkbox" v-model="termsAccepted" />
+            Akceptuję regulamin
+        </label>
+
+        <br><br>
+
+        <button type="submit" :disabled="!isValid">
+            Zarejestruj
+        </button>
+    </form>
+</div>
+
+    <!-- Mount app -->
+    <script>
+        Vue.createApp ({
+            data() {
+                return {
+                    firstName: '',
+                    lastName: '',
+                    email: '',
+                    password: '',
+                    confirmPassword: '',
+                    termsAccepted: false
+                }
+            },
+            computed: {
+                isValid() {
+                    return (
+                        this.firstName &&
+                        this.lastName &&
+                        this.email.includes('@') &&
+                        this.password &&
+                        this.password === this.confirmPassword &&
+                        this.termsAccepted
+                    );
+                }
+            },
+            methods: {
+                submitForm() {
+                    console.log('Imię:', this.firstName);
+                    console.log('Nazwisko:', this.lastName);
+                    console.log('E-mail:', this.email);
+                    console.log('Hasło:', this.password);
+                    console.log('Potwierdzenie hasła:', this.confirmPassword);
+                    console.log('Akceptacja regulaminu:', this.termsAccepted);
+                }
+            }
+        }).mount('#app')
+    </script>
+</body>
+</html>
