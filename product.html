@@ -1,0 +1,47 @@
+<html>
+    <head>
+        <script src="https://unpkg.com/vue@3"></script>
+
+        <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+        <style>
+            p {
+                font-family: 'Courier New';
+                margin: 0;
+            }
+        </style>
+
+    </head>
+    <body>
+        <div id="app">
+          <p><b>RECEIPT</b></p>
+          <p>-----------------</p>
+          <p>Product: {{product}}</p>
+          <p>Unit Price: {{price}} zł</p>
+          <p>Quantity: {{quantity}}</p>
+          <p>Amount: {{price*quantity}} zł</p>
+          <p>VAT Tax Rate: {{tax}}%</p>
+          <p>=================</p>
+          <p><b>Total: {{price*quantity*(1+tax/100)}} zł</b></p>
+        </div>
+
+
+
+        <script>
+        Vue.createApp({
+            data() {
+            return {
+                product:'book',
+                price:17,
+                quantity:3,
+                tax:23
+            }
+            }
+        }).mount('#app')
+        </script>
+
+    </body>
+</html>
+
+
+
+
